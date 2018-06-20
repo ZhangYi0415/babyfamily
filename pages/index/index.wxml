@@ -1,0 +1,10 @@
+<view class="container-view" style="height:{{windowHeight}}px">
+    <view class="row">
+        <image src="/assets/img/icon.png" class="logo"></image>
+    </view>
+    <view class="row">
+        <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <view class="weui-loading i" hidden="{{hidden}}"></view>{{content}}
+        </button>
+    </view>
+</view>

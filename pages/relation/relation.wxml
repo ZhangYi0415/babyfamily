@@ -1,0 +1,28 @@
+<view class="container-row">
+    <block wx:for="{{relationList}}" wx:key="*this">
+        <view class="inner">
+            <view class="holder">
+                <image src="{{item.headPic}}" class="img"></image>
+            </view>
+            <view class="holder" style="font-size: 14px;color: #000000">
+                {{item.nickName}}
+                <image hidden="{{item.isCreater?false:true}}" src="/assets/img/power.png" style="height: 8px;width: 8px;margin: 0 0 0 5px;"></image>
+            </view>
+            <view class="holder">
+                {{item.name}} 来过{{item.comeTimes}}次
+            </view>
+            <view class="holder">
+                最近: {{item.lastCame}}
+            </view>
+        </view>
+    </block>
+
+    <view class="inner">
+        <view class="holder" bindtap="relationCanAddList">
+            <image src="/assets/img/cross1.png" class="img"></image>
+        </view>
+        <view class="holder"> </view>
+        <view class="holder">添加亲属</view>
+        <view class="holder"> </view>
+    </view>
+</view>

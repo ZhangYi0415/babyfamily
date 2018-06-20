@@ -1,0 +1,13 @@
+<view class="weui-cells weui-cells_after-title white-bgc">
+    <block wx:for="{{relationCanAddList}}" wx:key="{{*this}}">
+        <view class="weui-cell weui-cell_access" >
+            <view class="weui-cell__bd">
+                <view style="display: inline-block; vertical-align: middle">{{item.name}}</view>
+            </view>
+            <button class="weui-btn mini-btn weui-cell__ft" data-relationid="{{item.id}}" open-type="share" type="primary"
+                    size="mini" style="margin: 0" hidden="{{item.canAdd == true? false : true}}">邀请</button>
+            <button class="weui-btn mini-btn weui-cell__ft" data-relationid="{{item.id}}" open-type="share" type="primary"
+                    size="mini" style="margin: 0" hidden="{{item.canAdd == true? true : false}}" disabled>已达上限</button>
+        </view>
+    </block>
+</view>

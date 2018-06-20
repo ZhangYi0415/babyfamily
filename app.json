@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/baby/baby",
+    "pages/addBaby/addBaby",
+    "pages/found/found",
+    "pages/imgBadge/imgBadge",
+    "pages/audioPlay/audioPlay",
+    "pages/relation/relation",
+    "pages/imgUploader/imgUploader",
+    "pages/public/picture/picture",
+    "pages/public/canSee/canSee",
+    "pages/relationAdd/relationAdd",
+    "pages/mine/mine"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "宝蓓家园",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#838383",
+    "selectedColor": "#1AAD19",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle" : "white",
+    "list": [
+      {
+        "pagePath": "pages/baby/baby",
+        "text": "宝宝",
+        "iconPath": "assets/img/ertong_normal.png",
+        "selectedIconPath": "assets/img/ertong_selected.png"
+      },
+      {
+        "pagePath": "pages/found/found",
+        "text": "发现",
+        "iconPath": "assets/img/found_normal.png",
+        "selectedIconPath": "assets/img/found_selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/img/mine_normal.png",
+        "selectedIconPath": "assets/img/mine_selected.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+<view class="weui-cells__title">类型</view>
+<view class="weui-cells weui-cells_after-title">
+    <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                <icon class="weui-icon-radio" type="success_no_circle" size="16" color="{{item.color}}"></icon>
+            </view>
+        </label>
+    </radio-group>
+</view>
+
+<view class="weui-cells__title" hidden="{{canSeeStatus}}">谁可以看</view>
+<view class="weui-cells weui-cells_after-title" hidden="{{canSeeStatus}}">
+    <checkbox-group bindchange="checkboxChange">
+        <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="uid">
+            <checkbox class="weui-check" value="{{item.uid}}" checked="{{item.checked}}"/>
+
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd img-cont">
+                <image src="{{item.headPic}}" style="width: 25px; height: 25px; display: flex;margin: 0 5px 0 0"/>
+                <view class="weui-cell__bd">{{item.name}}</view>
+            </view>
+            <view class="weui-cell__ft">{{item.relation}}</view>
+        </label>
+    </checkbox-group>
+</view>
+
+<view class="weui-cells__title" hidden="{{canSeeStatus1}}">不给谁看</view>
+<view class="weui-cells weui-cells_after-title" hidden="{{canSeeStatus1}}">
+    <checkbox-group bindchange="checkboxChange1">
+        <label class="weui-cell weui-check__label" wx:for="{{checkboxItems1}}" wx:key="uid">
+            <checkbox class="weui-check" value="{{item.uid}}" checked="{{item.checked}}"/>
+
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" color="red" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd img-cont">
+                <image src="{{item.headPic}}" style="width: 25px; height: 25px; display: flex;margin: 0 5px 0 0"/>
+                <view class="weui-cell__bd">{{item.name}}</view>
+            </view>
+            <view class="weui-cell__ft">{{item.relation}}</view>
+        </label>
+    </checkbox-group>
+</view>
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submit">提 交</button>
+</view>

@@ -1,0 +1,7 @@
+<import src="/utils/we-cropper/we-cropper.wxml"/>
+
+<view class="row">
+    <view class="btn-row" bindtap="getCropperImage">使用</view>
+</view>
+
+<template is="we-cropper" data="{{...cropperOpt}}"/>

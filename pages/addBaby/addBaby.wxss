@@ -1,0 +1,32 @@
+page {
+  background-color: #f8f8f8;
+}
+
+.container-view {
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row .img {
+  width: 90px;
+  height: 90px;
+}
+
+.row .title {
+  color: #838383;
+  font-size: 14px;
+  margin: 5px 0 0 0;
+}
+
+.row-space {
+  width: 100%;
+  height: 5px;
+}

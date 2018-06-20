@@ -1,0 +1,53 @@
+<view class="weui-cells__title">内容</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" maxlength="-1" placeholder="宝宝笑着？跑着？一切的美好在慢慢发生"
+                      style="height:100px" bindinput="contentChange"/>
+            <view class="weui-textarea-counter">不限长度</view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells__title">属性</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">记录日期</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker mode="date" value="{{inputData.recordTime}}" start="1970-01-01" end="{{endDate}}" bindchange="bindDateChange">
+                <view class="weui-input">{{inputData.recordTime}}</view>
+            </picker>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_access" bindtap="canSee">
+        <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">谁可以看</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{showType}}</view>
+    </view>
+</view>
+
+<view class="weui-cells__title">图片上传</view>
+<view class="container-row">
+    <view class="row-line">
+        <block wx:for="{{picData.picArray}}" wx:key="{{*this}}">
+            <view class="img-con" style="height:{{imgHeight}}px">
+                <view class="front">
+                    <image mode="aspectFit" class="img" src="{{item.src}}"></image>
+                </view>
+                <image src="/assets/img/delete.png" class="delete" data-uid="{{item.num}}" bindtap="delPic"></image>
+            </view>
+        </block>
+        <view class="img-con" style="height:{{imgHeight}}px;display: {{picData.picAddBtnHidden}};" bindtap="addPic" >
+            <view class="front">
+                <image class="addImg" src="/assets/img/cross1.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submit">提 交</button>
+</view>

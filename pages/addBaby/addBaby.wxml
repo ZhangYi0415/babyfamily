@@ -1,0 +1,73 @@
+<view class="container-view" style="height: {{windowHeight}}px;">
+    <view bindtap="chooseImg">
+        <view class="weui-cells__title">宝宝头像</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="row white-bgc">
+                <image class="img" src="{{headPic.picR}}"></image>
+                <view class="title">点击设置宝宝头像</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">基本信息</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">常用名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" value="{{inputData.cym}}" placeholder="选填" maxlength="10" bindinput="cymInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">小名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" value="{{inputData.xm}}" placeholder="必填" maxlength="10" bindinput="xmInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">出生日期</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker mode="date" value="{{inputData.date}}" start="1970-01-01" end="{{endDate}}" bindchange="bindDateChange">
+                    <view class="weui-input">{{inputData.date}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">性别</view>
+    <view class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="radioChange">
+            <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+                <view class="weui-cell__bd">{{item.name}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+            </label>
+        </radio-group>
+    </view>
+
+    <view class="weui-cells__title">您与宝宝的关系</view>
+    <view class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="radioRelationChange">
+            <label class="weui-cell weui-check__label" wx:for="{{radioRelation}}" wx:key="value">
+                <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+                <view class="weui-cell__bd">{{item.name}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+            </label>
+        </radio-group>
+    </view>
+
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="submit">确定</button>
+    </view>
+</view>

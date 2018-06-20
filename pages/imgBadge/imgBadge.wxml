@@ -1,0 +1,18 @@
+<block wx:for="{{listData}}" wx:key="*this">
+    <!--<navigator url="/pages/audioPlay/audioPlay?url={{item.url}}">-->
+        <view class="weui-cell white-bgc" bindtap="playMedia" data-url="{{item.url}}" data-img="{{item.img}}"
+        data-title="{{item.name}}">
+            <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <image src="{{item.img}}" style="width: 50px; height: 50px; display: block"/>
+                <!--<view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</view>-->
+            </view>
+            <view class="weui-cell__bd">
+                <view>{{item.name}}</view>
+                <view style="font-size: 13px;color: #888888;">{{item.intro}}</view>
+            </view>
+        </view>
+    <!--</navigator>-->
+</block>
+<view class="weui-loadmore weui-loadmore_line" hidden="{{noMoreData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot noMoreData"></view>
+</view>

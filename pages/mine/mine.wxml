@@ -1,0 +1,32 @@
+<view class="body-con" style="height: {{windowHeight}}px">
+    <view class="body-half" style="height: {{windowHalfHeight}}px">
+        <image class="img" src="{{pic}}" ></image>
+        <view class="user-name">{{nickName}}</view>
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+        <view bindtap="toBabyList" class="weui-cell weui-cell_access white-bgc" hover-class="weui-cell_active">
+            <view class="weui-cell__hd img-row">
+                <image src="/assets/img/ertong_selected.png" style="margin-right: 5px;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd">我的宝贝</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+
+    <view class="row-space"></view>
+
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">版本</view>
+            <view class="weui-cell__ft">{{version}}</view>
+        </view>
+    </view>
+
+    <view class="row-space"></view>
+
+    <view class="weui-footer">
+        <view class="weui-footer__text">Copyright © 2018- ZhangYi</view>
+    </view>
+
+</view>

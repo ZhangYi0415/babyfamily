@@ -1,0 +1,149 @@
+<!--新增选择页-->
+<view class="float" catchtouchmove="cathMove" hidden="{{hiddenAdd}}" bindtap="cancelAdd">
+    <view class="bottom" catchtap="tapCatch">
+        <view class="square" style="width:{{squareWidth}}px;height:{{squareHeight}}px" bindtap="publicPicture">
+            <view class="img" style="background-color:#eb3324;border-radius:{{squareViewWidth/2}}px;width:{{squareViewWidth}}px;height:{{squareViewHeight}}px">
+                <image src="/assets/img/picture.png" style="width:{{squareViewWidth/2}}px;height:{{squareViewHeight/2}}px"></image>
+            </view>
+            <view class="text">
+                照片
+            </view>
+        </view>
+    </view>
+</view>
+<!--多功能页-->
+<view class="float" catchtouchmove="cathMove" hidden="{{hiddenFun}}" bindtap="cancelFun">
+    <view class="bottom" catchtap="tapCatch">
+        <view class="square" style="width:{{squareWidth}}px;height:{{squareHeight}}px" bindtap="familyGroup">
+            <view class="img" style="background-color:#FF9900;border-radius:{{squareViewWidth/2}}px;width:{{squareViewWidth}}px;height:{{squareViewHeight}}px">
+                <image src="/assets/img/family.png" style="width:{{squareViewWidth/2}}px;height:{{squareViewHeight/2}}px"></image>
+            </view>
+            <view class="text">
+                亲友团
+            </view>
+        </view>
+    </view>
+</view>
+<!--宝宝列表页-->
+<view class="container-view" style="height: {{windowHeight}}px" wx:if="{{!hiddenList}}">
+    <view class="row white-bgc">
+        <navigator url="/pages/addBaby/addBaby" class="nv-container" bindtap="addBaby">
+            <image src="/assets/img/add.png" class="img"></image>
+            <view class="title">添加我的宝宝</view>
+        </navigator>
+        <!--<navigator url="" class="nv-container">-->
+            <!--<image src="/assets/img/yaoqing.png" class="img"></image>-->
+            <!--<view class="title">邀请</view>-->
+        <!--</navigator>-->
+    </view>
+
+    <view class="row-space"></view>
+
+    <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{listData.data}}" wx:key="secondName">
+            <view class="weui-cell" data-uid="{{item.uid}}" data-unReadNum="{{item.unReadNum}}" bindtap="babyDetail">
+                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <image src="{{item.headPic}}" style="border-radius:25px;width: 50px; height: 50px; display: block"/>
+                    <view class="weui-badge" hidden="{{item.unReadNum>0?false:true}}" style="position: absolute;top: -.4em;right: -.4em;">{{item.unReadNum}}</view>
+                    <image src="/assets/img/power.png" hidden="{{!item.admin}}" style="position: absolute;width: 10px;height: 10px;top: 40px;left: 40px;"></image>
+                </view>
+                <view class="weui-cell__bd">
+                    <view>{{item.name === ''?item.secondName:item.name}}</view>
+                    <view style="font-size: 13px;color: #888888;">出生第 {{item.birthday}} 天
+                        的一个{{item.sex == 0 ? '帅哥' : '美女'}}
+                    </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </block>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" hidden="{{listData.noMoreData}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot noMoreData"></view>
+    </view>
+</view>
+
+<!--宝宝详情页-->
+<view class="container-view" style="height: {{windowHeight}}px" wx:if="{{!hiddenList1}}">
+    <view class="nav">
+        <view class="left" bindtap="backToList">
+            <image class="img" src="/assets/img/left-arrow.png"></image>
+            <view class="nav-text">
+                宝宝
+            </view>
+        </view>
+        <view class="right">
+            <image class="image" style="width: 20px; height: 20px;" src="/assets/img/more.png" bindtap="moreFun"></image>
+            <image class="image" style="margin: 0 8px 0 0;" src="/assets/img/camera-white.png" bindtap="add"></image>
+        </view>
+    </view>
+    <view class="header" bindtap="editBaby">
+        <view class="row">
+            <image class="img" src="{{babyInfo.headPic}}"></image>
+            <view class="con">
+                <view class="text">{{babyInfo.name}}
+                    <image class="img-big" src="/assets/img/{{babyInfo.sex==0?'malebaby':'femalebaby'}}.png"></image>
+                </view>
+                <view class="text" style="font-size:14px;">出生第 {{babyInfo.birthday}} 天
+                    <image class="img-little" style="{{babyInfo.isCreater==true ? '' : 'display: none;'}}"
+                           src="/assets/img/edit.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="middle">
+        <block wx:for="{{detailListData.data}}" wx:key="*this">
+            <view class="row-middle">
+                <view class="date-middle">
+                    <view class="left-middle">
+                        <image class="img-clock" src="/assets/img/clock.png"></image>
+                    </view>
+                    <view class="right-middle" style="width:{{rightChannelWidth}}px;">
+                        <view class="square">
+                            {{item.record_time_day}}
+                        </view>
+                        <view class="date-con" style="width:{{rmChannelWidth}}px">
+                            <view class="date-con-in">{{item.record_time_month}}月</view>
+                            <view class="date-con-in">{{item.record_time_year}}</view>
+                        </view>
+                        <view class="date-number">第{{item.record_time_diff}}天</view>
+                    </view>
+                </view>
+            </view>
+            <!--详情循环-->
+            <view class="detail-con">
+                <view class="detail-con1" style="width:{{detailWidth}}px;">
+                    <view class="detail-inner">
+                        <view class="topHalf" style="width: {{detailWidthInner}}px">
+                            <view class="row-content">
+                                {{item.content}}
+                            </view>
+                            <!--<block wx:if="{{item.pic.length > 1 ? true : false}}">-->
+                            <block wx:for="{{item.pic}}" wx:key="record_id">
+                                <image mode="aspectFill" class="img-little" src="{{item.pic}}" data-currentPic="{{item.picOrigin}}"
+                                       style="width:{{item.heightAndWidth}}px;height:{{item.heightAndWidth}}px" bindtap="previewImG"></image>
+                            </block>
+                            <!--</block>-->
+                            <!--<block wx:if="{{item.pic.length == 1 ? true : false}}">-->
+                            <!--<block wx:for="{{item.pic}}" wx:key="record_id" >-->
+                            <!--<image mode="widthFix" class="img-little" src="{{item.pic}}" data-currentPic="{{item.picOrigin}}"-->
+                            <!--style="width:{{item.heightAndWidth}}px;height:{{item.heightAndWidth}}px" bindtap="previewImG"></image>-->
+                            <!--</block>-->
+                            <!--</block>-->
+                        </view>
+                        <view class="bottomHalf" style="width: {{detailWidthInner - 40}}px">
+                            <view class="text">
+                                {{item.nickName}} - {{item.relation}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+        <view class="weui-loadmore weui-loadmore_line" hidden="{{detailListData.noMoreData}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot noMoreData"></view>
+        </view>
+    </view>
+</view>
+
